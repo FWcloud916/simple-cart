@@ -1,0 +1,46 @@
+{
+    "name": "fwcloud916/simple-cart",
+    "description": ":package_description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fang Wei",
+            "email": "ree0916tw@gmail.com",
+            "homepage": "https://github.com/fwcloud916"
+        }
+    ],
+    "homepage": "https://github.com/fwcloud916/simple-cart",
+    "keywords": ["Laravel", "SimpleCart"],
+    "require": {
+        "illuminate/support": "~9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fwcloud916\\SimpleCart\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fwcloud916\\SimpleCart\\Tests\\": "tests",
+            "Fwcloud916\\SimpleCart\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fwcloud916\\SimpleCart\\SimpleCartServiceProvider"
+            ],
+            "aliases": {
+                "SimpleCart": "Fwcloud916\\SimpleCart\\Facades\\SimpleCart"
+            }
+        }
+    }
+}
