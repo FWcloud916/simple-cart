@@ -12,6 +12,8 @@ class SimpleCart extends Model
 
     protected $guarded = [];
 
+    protected $with = ['product'];
+
     protected static function newFactory()
     {
         return \Fwcloud916\SimpleCart\Database\Factories\SimpleCartFactory::new();
@@ -20,5 +22,10 @@ class SimpleCart extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(SimpleProduct::class);
     }
 }
