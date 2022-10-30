@@ -12,7 +12,7 @@ class SimpleCart extends Model
 
     protected $guarded = [];
 
-    protected $with = ['product'];
+    protected $with = ['product', 'coupon'];
 
     protected static function newFactory()
     {
@@ -27,5 +27,10 @@ class SimpleCart extends Model
     public function product()
     {
         return $this->belongsTo(SimpleProduct::class);
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(SimpleCoupon::class);
     }
 }

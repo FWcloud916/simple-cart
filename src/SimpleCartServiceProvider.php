@@ -13,6 +13,11 @@ class SimpleCartServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'fwcloud916');
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'fwcloud916');
+        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -56,6 +61,7 @@ class SimpleCartServiceProvider extends ServiceProvider
             __DIR__.'/../config/simple-cart.php' => config_path('simple-cart.php'),
         ], 'simple-cart.config');
 
+
         // Export the migration
         if (! class_exists('CreateSimpleCouponsTable')) {
             $this->publishes([
@@ -67,6 +73,13 @@ class SimpleCartServiceProvider extends ServiceProvider
         if (! class_exists('CreateSimpleProductsTable')) {
             $this->publishes([
                 __DIR__ . '/../database/migrations/create_simple_products_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_simple_products_table.php'),
+                // you can add any number of migrations here
+            ], 'migrations');
+        }
+
+        if (! class_exists('CreateSimpleCartsTable')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/create_simple_carts_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_simple_carts_table.php'),
                 // you can add any number of migrations here
             ], 'migrations');
         }
