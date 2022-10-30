@@ -55,5 +55,27 @@ class SimpleCartServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/simple-cart.php' => config_path('simple-cart.php'),
         ], 'simple-cart.config');
+
+        // Export the migration
+        if (! class_exists('CreateSimpleCouponsTable')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/create_simple_coupons_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_simple_coupons_table.php'),
+                // you can add any number of migrations here
+            ], 'migrations');
+        }
+
+        if (! class_exists('CreateSimpleProductsTable')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/create_simple_products_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_simple_products_table.php'),
+                // you can add any number of migrations here
+            ], 'migrations');
+        }
+
+        if (! class_exists('CreateSimpleCartsTable')) {
+            $this->publishes([
+                __DIR__ . '/../database/migrations/create_simple_carts_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_simple_carts_table.php'),
+                // you can add any number of migrations here
+            ], 'migrations');
+        }
     }
 }
